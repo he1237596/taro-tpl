@@ -1,4 +1,5 @@
-import Taro, { Component } from '@tarojs/taro'
+import { Component } from 'react'
+import Taro from '@tarojs/taro';
 import { View, Text } from '@tarojs/components'
 import { AtForm, AtInput, AtButton, AtAvatar } from 'taro-ui'
 import { connect } from 'react-redux'
@@ -14,13 +15,10 @@ import './index.scss'
 }))
 
 class Login extends Component {
-  // config = {
-  //   navigationBarTitleText: '登录',
-  // }
   constructor() {
     super(...arguments)
     this.state = {
-      userName: '13729747951',
+      userName: '11729747951',
       password: '123456',
       clientType: 'applets',
     }
@@ -33,8 +31,8 @@ class Login extends Component {
     return value
   }
 
-  onSubmit(event) {
-    event.preventDefault()
+  onSubmit = (e) => {
+    e.preventDefault()
     const { userName, password, clientType } = this.state;
     const { dispatch } = this.props;
     if (!/^[1][3,4,5,7,8][0-9]{9}$/.test(userName)) {
@@ -76,11 +74,9 @@ class Login extends Component {
       <View className='main'>
         <View className='logoWrap'>
           <AtAvatar image={logoImg} className='logoImg'></AtAvatar>
-          <View className='mesName'>云 智 控</View>
+          <View className='mesName'>柏视医疗</View>
         </View>
-        <AtForm className='form'
-          onSubmit={this.onSubmit.bind(this)}
-        >
+        <View className='form'>
           <View className='fileItem'>
             <Text className='iconfont at-icon at-icon-user'></Text>
             <AtInput
@@ -110,8 +106,8 @@ class Login extends Component {
           </View>
           <View className='forgetPassword'>
           </View>
-          <AtButton formType='submit' type='primary' disabled={loading} className='sub-btn' loading={loading}>登录</AtButton>
-        </AtForm>
+          <AtButton type='primary' disabled={loading} className='sub-btn' loading={loading} onClick={this.onSubmit}>登录</AtButton>
+        </View>
       </View>
     )
   }
