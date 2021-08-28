@@ -1,4 +1,11 @@
+const path = require('path');
+
 const config = {
+  alias: {
+    '@components': path.resolve(__dirname, '../', 'src/components'),
+    '@utils': path.resolve(__dirname, '../', 'src/utils'),
+    '@services': path.resolve(__dirname, '../', 'src/services')
+  },
   projectName: 'myApp',
   date: '2021-8-26',
   designWidth: 750,
